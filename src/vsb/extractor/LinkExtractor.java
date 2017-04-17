@@ -1,12 +1,12 @@
-package vbs.extractor;
+package vsb.extractor;
 
 import java.util.List;
 
 import com.gargoylesoftware.htmlunit.html.HtmlAnchor;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-import vbs.filter.UrlFilter;
-import vbs.priorizer.Priorizer;
+import vsb.filter.UrlFilter;
+import vsb.priorizer.Priorizer;
 
 public class LinkExtractor {
 	

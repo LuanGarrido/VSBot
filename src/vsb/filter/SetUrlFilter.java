@@ -1,4 +1,4 @@
-package vbs.filter;
+package vsb.filter;
 
 import java.util.HashSet;
 import java.util.Set;

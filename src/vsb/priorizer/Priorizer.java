@@ -1,4 +1,4 @@
-package vbs.priorizer;
+package vsb.priorizer;
 
 public interface Priorizer {
 	

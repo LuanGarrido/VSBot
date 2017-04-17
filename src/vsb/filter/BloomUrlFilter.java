@@ -1,4 +1,4 @@
-package vbs.filter;
+package vsb.filter;
 
 public class BloomUrlFilter extends BaseUrlFilter implements UrlFilter {
 	

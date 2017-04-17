@@ -1,8 +1,8 @@
-package vbs.main;
+package vsb.main;
 
-import vbs.filter.UrlFilterFactory;
-import vbs.priorizer.PriorizerFactory;
 import vsb.fetcher.HTTPFetcher;
+import vsb.filter.UrlFilterFactory;
+import vsb.priorizer.PriorizerFactory;
 
 public class Main {
 	

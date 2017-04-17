@@ -7,9 +7,9 @@ import com.gargoylesoftware.htmlunit.BrowserVersion;
 import com.gargoylesoftware.htmlunit.WebClient;
 import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
-import vbs.extractor.LinkExtractor;
-import vbs.filter.UrlFilter;
-import vbs.priorizer.Priorizer;
+import vsb.extractor.LinkExtractor;
+import vsb.filter.UrlFilter;
+import vsb.priorizer.Priorizer;
 
 public class HTTPFetcher {
 	

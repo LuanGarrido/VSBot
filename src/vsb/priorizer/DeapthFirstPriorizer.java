@@ -1,4 +1,4 @@
-package vbs.priorizer;
+package vsb.priorizer;
 
 import java.util.Stack;
 import java.util.logging.Level;

@@ -1,4 +1,4 @@
-package vbs.filter;
+package vsb.filter;
 
 public interface UrlFilter {
 
