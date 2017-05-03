@@ -4,6 +4,8 @@ import java.util.Stack;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+import vsb.model.Seed;
+
 public class DeapthFirstPriorizer implements Priorizer {
 
 	private Stack stack;
@@ -15,25 +17,30 @@ public class DeapthFirstPriorizer implements Priorizer {
 	}
 	
 	@Override
-	public void push(String url) {		
+	public void push(Seed seed) {		
 		if(this.stack == null)
 			throw new NullPointerException("The DeapthFirst Priorizer did not instantiate the stack.");
 		
-		LOGGER.log(Level.INFO, "Pushing url: {0} to stack.", url);
-		this.stack.push(url);
+		LOGGER.log(Level.INFO, "Pushing url: {0} to stack.", seed.getUrl());
+		this.stack.push(seed);
 	}
 
 	@Override
-	public String pop() {
+	public Seed pop() {
 		if(this.stack == null)
 			throw new NullPointerException("The DeapthFirst Priorizer did not instantiate the stack.");
 		
 		try {
-			String url = (String) this.stack.pop();
-			LOGGER.log(Level.INFO, "Poping url: {0} from stack.", url);
-			return url;
+			Seed seed = (Seed) this.stack.pop();
+			LOGGER.log(Level.INFO, "Poping url: {0} from stack.", seed.getUrl());
+			return seed;
 		} catch (Exception e) {
 			return null;
 		}
+	}
+
+	@Override
+	public boolean isEmpty() {
+		return this.stack.isEmpty();		
 	}
 }

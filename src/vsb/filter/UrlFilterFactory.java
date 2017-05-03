@@ -1,16 +1,16 @@
 package vsb.filter;
 
+import java.util.List;
+
 public abstract class UrlFilterFactory {
 
-	public static UrlFilter build(String priorizerType){
+	public static UrlFilter build(String priorizerType, List<String> regexPatterns){
 		if(priorizerType == null || priorizerType.trim().equals(""))
-			throw new NullPointerException("Unkown filter type");
-		
-		String[] regexPatterns = UrlFilterFactory.loadRegexPatterns();
+			throw new NullPointerException("Unkown filter type");		
 		
 		switch (priorizerType){
-			case "SetUrlFilter":
-				return new SetUrlFilter(regexPatterns);
+			case "SimpleUrlFilter":
+				return new SimpleUrlFilter(regexPatterns);
 			case "BloomUrlFilter":
 				return new BloomUrlFilter(regexPatterns);
 			default:

@@ -1,5 +1,7 @@
 package vsb.fetcher;
 
+import java.util.List;
+import java.util.concurrent.Callable;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -9,24 +11,18 @@ import com.gargoylesoftware.htmlunit.html.HtmlPage;
 
 import vsb.extractor.LinkExtractor;
 import vsb.filter.UrlFilter;
-import vsb.priorizer.Priorizer;
+import vsb.model.Seed;
 
-public class HTTPFetcher {
-	
-	private String url;
+public class HTTPFetcher implements Callable<List<Seed>>{
+		
 	private WebClient webClient;
-	
-	private UrlFilter urlFilter;
-	private Priorizer priorizer;
+	private Seed seed;
 	
 	private static final Integer Javascript_Wait_Timeout = 1000; 
-	
 	private static final Logger LOGGER = Logger.getLogger( HTTPFetcher.class.getName() );
 	
-	public HTTPFetcher(String url, UrlFilter urlFilter, Priorizer priorizer){
-		this.url = url;
-		this.urlFilter = urlFilter;
-		this.priorizer = priorizer;
+	public HTTPFetcher(Seed seed){
+		this.seed = seed;
 		initSimulatedBrowser();	
 	}
 
@@ -41,14 +37,23 @@ public class HTTPFetcher {
 		}
 	}
 	
-	public void download(){
+	public List<Seed> download(){
 		try {
-			LOGGER.log(Level.INFO, "Starting to fetch root url: {0}", this.url);
-			HtmlPage page = this.webClient.getPage(url);
-			(new LinkExtractor(this.urlFilter, this.priorizer)).extractLinks(page);
+			LOGGER.log(Level.INFO, "Starting to fetch root url: {0}", this.seed.getUrl());
+			HtmlPage page = this.webClient.getPage(this.seed.getUrl());
+			LinkExtractor linkExtractor = new LinkExtractor(this.seed);
+			List<Seed> seeds = linkExtractor.extractLinks(page);
 			LOGGER.log(Level.INFO, "\n*******\n\n");
+			return seeds;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		return null;
+	}
+
+	@Override
+	public List<Seed> call() throws Exception {
+		return this.download();
 	}
 }

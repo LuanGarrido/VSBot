@@ -1,0 +1,12 @@
+{ 
+	"seeds" : [
+		{
+			"url" : "http://noticias.gov.br/noticias/",
+			"regexPatterns" : ["http://noticias.gov.br/*"],
+			"useJavascript" : "false",
+			"urlFilter" : "SimpleUrlFilter"
+		},
+		{
+		}
+	]
+} 

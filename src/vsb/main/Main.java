@@ -1,5 +1,6 @@
 package vsb.main;
 
+import vsb.crawler.WebCrawler;
 import vsb.fetcher.HTTPFetcher;
 import vsb.filter.UrlFilterFactory;
 import vsb.priorizer.PriorizerFactory;
@@ -7,7 +8,9 @@ import vsb.priorizer.PriorizerFactory;
 public class Main {
 	
 	public static void main(String[] args) {
-		HTTPFetcher fetcher = new HTTPFetcher("http://noticias.gov.br/noticias/", UrlFilterFactory.build("SetUrlFilter"), PriorizerFactory.build("BreadthFirstPriorizer"));
-		fetcher.download();
+//		HTTPFetcher fetcher = new HTTPFetcher("http://noticias.gov.br/noticias/", UrlFilterFactory.build("SetUrlFilter"), PriorizerFactory.build("BreadthFirstPriorizer"));
+//		fetcher.download();
+		WebCrawler crawler = new WebCrawler();
+		crawler.craw();
 	}
 }

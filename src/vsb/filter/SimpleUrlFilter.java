@@ -1,20 +1,22 @@
 package vsb.filter;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
-public class SetUrlFilter extends BaseUrlFilter implements UrlFilter {
+public class SimpleUrlFilter extends BaseUrlFilter implements UrlFilter {
 	
-	private Set<String> set;
-	private String[] regexPatterns;
+	private Set<String> set;	
 	
-	public SetUrlFilter(String[] regexPatterns) {
-		this.set = new HashSet<String>();
+	public SimpleUrlFilter(List<String> regexPatterns) {
+		this.set = new HashSet<String>();		
+		this.compilePatterns(regexPatterns);
 	}
+	
 	
 	@Override
 	public Boolean isValid(String url) {		
-		if(!this.isValidByRegex(url, this.regexPatterns))
+		if(!this.isValidByRegex(url))
 			return false;
 		if(!this.isInherentlyValid(url))
 			return false;
